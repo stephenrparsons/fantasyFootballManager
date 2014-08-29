@@ -1,4 +1,5 @@
 library(XML)
+library(plyr)
 
 qb <- readHTMLTable("http://www.fantasypros.com/nfl/projections/qb.php", stringsAsFactors = FALSE)$data
 rb <- readHTMLTable("http://www.fantasypros.com/nfl/projections/rb.php", stringsAsFactors = FALSE)$data
@@ -19,5 +20,9 @@ te$POS <- "TE"
 k$POS  <- "K"
 d$POS  <- "D/ST"
 
-print((d))
-print(head(qb))
+players <- rbind.fill(qb, rb, wr, te, k, d)
+players <- players[,c("Player", "POS", "FPTS")]
+players$FPTS <- as.numeric(players$FPTS)
+players <- players[order(-players$FPTS),]
+
+saveRDS(players, "players.rds")
