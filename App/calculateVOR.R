@@ -26,6 +26,8 @@ players$VOR <- players$FPTS - players$RV
 # Order by descending VOR
 players <- players[order(-players$VOR),]
 
+write.csv(players, file="players.csv")
+
 # Set up empty team
 team <- data.frame(matrix(NA, 16, 2))
 team[1,1] <- "QB"
@@ -37,4 +39,4 @@ team[7,1] <- "D/ST"
 team[8,1] <- "K"
 team[9:16,1] <- "Bench"
 
-print(team)
+saveRDS(team, "data/team.rds")
