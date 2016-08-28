@@ -65,5 +65,19 @@ function init_tables(options) {
 		addRow.remove().draw();
 	    });
 
+	    takenTable.on('mousedown', 'tbody tr', function(e) {
+		var $row = $(this);
+		var addRow = takenTable.row($row);
+		prospectsTable.row.add(addRow.data()).draw();
+		addRow.remove().draw();
+	    });
+
+	    myTeamTable.on('mousedown', 'tbody tr', function(e) {
+		var $row = $(this);
+		var addRow = myTeamTable.row($row);
+		prospectsTable.row.add(addRow.data()).draw();
+		addRow.remove().draw();
+	    });
+
 	});
 }
