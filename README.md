@@ -12,7 +12,7 @@ Personally, when drafting, I typically take the available player with the highes
 Controls
 --------
 
-Click on a prospect: marks as Taken by another team.
-Shift-click on a prospect: marks as My Team (when you draft a player).
-Click on a Taken player: returns to Prospects table.
+Click on a prospect: marks as Taken by another team.  
+Shift-click on a prospect: marks as My Team (when you draft a player).  
+Click on a Taken player: returns to Prospects table.  
 Click on a My Team player: returns to Prospects table.
