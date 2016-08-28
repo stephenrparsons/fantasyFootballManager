@@ -1,12 +1,14 @@
 library(XML)
+library(RCurl)
 library(plyr)
 
-qb <- readHTMLTable("http://www.fantasypros.com/nfl/projections/qb.php", stringsAsFactors = FALSE)$data
-rb <- readHTMLTable("http://www.fantasypros.com/nfl/projections/rb.php", stringsAsFactors = FALSE)$data
-wr <- readHTMLTable("http://www.fantasypros.com/nfl/projections/wr.php", stringsAsFactors = FALSE)$data
-te <- readHTMLTable("http://www.fantasypros.com/nfl/projections/te.php", stringsAsFactors = FALSE)$data
-k  <- readHTMLTable("http://www.fantasypros.com/nfl/projections/k.php",  stringsAsFactors = FALSE)$data
-d  <- readHTMLTable("http://games.espn.go.com/ffl/tools/projections?leagueId=0&slotCategoryId=16", stringsAsFactors = FALSE)$playertable_0
+qbURL <- "https://www.fantasypros.com/nfl/projections/qb.php"
+qb <- readHTMLTable(getURL(qbURL), stringsAsFactors = FALSE)$data
+rb <- readHTMLTable(getURL("https://www.fantasypros.com/nfl/projections/rb.php"), stringsAsFactors = FALSE)$data
+wr <- readHTMLTable(getURL("https://www.fantasypros.com/nfl/projections/wr.php"), stringsAsFactors = FALSE)$data
+te <- readHTMLTable(getURL("https://www.fantasypros.com/nfl/projections/te.php"), stringsAsFactors = FALSE)$data
+k  <- readHTMLTable(getURL("https://www.fantasypros.com/nfl/projections/k.php"),  stringsAsFactors = FALSE)$data
+d  <- readHTMLTable(getURL("http://games.espn.com/ffl/tools/projections?leagueId=0&slotCategoryId=16"), stringsAsFactors = FALSE)$playertable_0
 
 colnames(d) <- d[1,]
 d <- d[-1,][c("PLAYER, TEAM POS", "PTS")]
